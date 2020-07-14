@@ -22,10 +22,10 @@ class Contact extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=30)
-     * @Assert\Length(min = 11, max = 20,
-     *     minMessage = "Phone number value must be greater than 10 symbols",
+     * @Assert\Length(min = 10, max = 15,
+     *     minMessage = "Phone number value must be greater or equals than 10 symbols",
      *     maxMessage = "Phone number value must be less than 21 symbols")
-     * @Assert\Regex(pattern="/^[0-9]*$/", message="Phone number value must contains only numbers")
+     * @Assert\Regex(pattern="/^[+]?[0-9]{10,21}$/", message="Phone number value must contains only numbers")
      */
     private string $phone;
 
