@@ -96,11 +96,7 @@ paths:
               $ref: '#/components/schemas/ContactInfo'
       responses:
         201:
-          description: Ok
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ContactInfo'
+          $ref: '#/components/responses/CreateContactSuccessResponse'
         400:
           $ref: '#/components/responses/BadRequestResponse'
         422:
