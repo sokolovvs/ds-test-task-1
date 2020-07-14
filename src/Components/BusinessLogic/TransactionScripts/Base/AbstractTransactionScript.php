@@ -10,9 +10,9 @@ use Throwable;
 
 abstract class AbstractTransactionScript implements InteractorInterface
 {
-    private EntityManagerInterface $entityManager;
+    protected EntityManagerInterface $entityManager;
 
-    private InteractorInterface $interactor;
+    protected InteractorInterface $interactor;
 
     public function __construct(EntityManagerInterface $entityManager, InteractorInterface $interactor)
     {

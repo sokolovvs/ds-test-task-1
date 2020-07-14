@@ -13,10 +13,6 @@ use Throwable;
 
 class CreateContactInteractor extends AbstractTransactionScript
 {
-    private CreatContact $interactor;
-
-    private EntityManagerInterface $entityManager;
-
     public function __construct(
         CreatContact $interactor,
         EntityManagerInterface $entityManager
