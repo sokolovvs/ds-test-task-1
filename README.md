@@ -19,3 +19,7 @@ Edit _.env_
 #####Migrations
 
 ```php bin/console doctrine:migrations:migrate``` - run migrations
+
+API
+-------------
+#####[API docs](./docs/api/openapi.yaml)
