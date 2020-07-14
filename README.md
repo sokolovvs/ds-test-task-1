@@ -5,7 +5,8 @@ DS test task
 
 Installation
 -------------
-#####Environment
+###### Environment
+
 ```composer install``` - install project dependencies
 
 ```cd <project_root>; cp .env.example .env``` - copy .env
@@ -16,10 +17,10 @@ Edit _.env_
 
 ```php bin/console list``` - show available commands
 
-#####Migrations
+###### Migrations
 
 ```php bin/console doctrine:migrations:migrate``` - run migrations
 
 API
 -------------
-#####[API docs](./docs/api/openapi.yaml)
+#### [API docs](./docs/api/openapi.yaml)
