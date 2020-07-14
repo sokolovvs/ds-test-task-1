@@ -41,7 +41,7 @@ components:
       properties:
         phone:
           type: string
-          example: 000
+          example: +7800553535
           description: Phone number
         email:
           type: string
