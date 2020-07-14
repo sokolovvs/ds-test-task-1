@@ -8,6 +8,8 @@ servers:
 tags:
   - name: Contact
     description: Operations related to Contact
+  - name: Location
+    description: Operations related to Location
 components:
   schemas:
     Error:
@@ -57,6 +59,23 @@ components:
           example: Hello
           description: Message content
           nullable: true
+    LocationInfo:
+      required:
+        - lat
+        - lon
+        - town
+      properties:
+        lat:
+          type: number
+          description: Lantitude
+          example: 54.970901
+        lon:
+          type: number
+          description: Longitude
+          example: 73.393753
+        town:
+          type: string
+          example: Omsk
   securitySchemes:
     bearerAuth:
       type: http
@@ -81,6 +100,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ContactInfo'
+    GetLocationByIpSuccessResponse:
+      description: Ok
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LocationInfo'
 paths:
   /contact:
     post:
@@ -101,3 +126,18 @@ paths:
           $ref: '#/components/responses/BadRequestResponse'
         422:
           $ref: '#/components/responses/ValidationFailedResponse'
+  /self-location/:
+    get:
+      tags:
+        - Location
+      summary: Returns location info by user's IP
+      operationId: locationByIp
+      responses:
+        200:
+          $ref: '#/components/responses/GetLocationByIpSuccessResponse'
+        500:
+          description: Operation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
