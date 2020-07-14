@@ -38,7 +38,12 @@ components:
         - phone
         - email
         - message
+        - id
       properties:
+        id:
+          type: string
+          format: uuid
+          description: Contact resource identificator
         phone:
           type: string
           example: +7800553535
