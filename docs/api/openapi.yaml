@@ -76,7 +76,7 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
     CreateContactSuccessResponse:
-      description: ff
+      description: Ok
       content:
         application/json:
           schema:
