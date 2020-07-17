@@ -9,7 +9,6 @@ use App\Components\BusinessLogic\TransactionScripts\Base\AbstractTransactionScri
 use App\Components\Dto\Input\Contact\CreateContactDto;
 use App\Components\Dto\Output\Contact\ContactDto;
 use Doctrine\ORM\EntityManagerInterface;
-use Throwable;
 
 class CreateContactInteractor extends AbstractTransactionScript
 {
@@ -27,17 +26,6 @@ class CreateContactInteractor extends AbstractTransactionScript
      */
     public function execute($dto)
     {
-        $this->entityManager->beginTransaction();
-
-        try {
-            $result = $this->interactor->execute($dto);
-            $this->entityManager->flush();
-            $this->entityManager->commit();
-
-            return $result;
-        } catch (Throwable $throwable) {
-            $this->entityManager->rollback();
-            throw $throwable;
-        }
+        return parent::execute($dto);
     }
 }
