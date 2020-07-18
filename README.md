@@ -9,7 +9,7 @@ Installation
 
 ```composer install``` - install project dependencies
 
-```cd <project_root>; cp .env.example .env``` - copy .env
+```cp .env.example .env``` - copy .env
 
 Edit _.env_
 
