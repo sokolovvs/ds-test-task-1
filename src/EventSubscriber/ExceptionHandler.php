@@ -27,9 +27,7 @@ class ExceptionHandler implements EventSubscriberInterface
     public function handle(ExceptionEvent $event)
     {
         $exception = $event->getThrowable();
-        $type = 'error';
         $code = Response::HTTP_INTERNAL_SERVER_ERROR;
-
 
         if ($exception instanceof ImproveException) {
             $errors = $exception->getErrors();
@@ -37,7 +35,6 @@ class ExceptionHandler implements EventSubscriberInterface
 
             if ($exception instanceof ValidationException) {
                 $code = Response::HTTP_UNPROCESSABLE_ENTITY;
-                $type = 'validation-error';
             }
         } else {
             $errors = [];
@@ -45,14 +42,13 @@ class ExceptionHandler implements EventSubscriberInterface
 
         if ($exception instanceof BadRequestHttpException) {
             $code = Response::HTTP_BAD_REQUEST;
-            $type = 'bad-request';
             $message = 'Bad Request';
         }
 
         $message = $message ?? 'Unknown error';
 
         $httpError = new HttpError(
-            sprintf('%s/%s', getenv('API_DOC_URL'), $type), 'Error',
+            'https://tools.ietf.org/html/rfc2616#section-10', 'Error',
             $code, $message, null, $errors
         );
 
