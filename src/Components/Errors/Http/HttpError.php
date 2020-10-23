@@ -26,13 +26,16 @@ class HttpError
 
     private array $invalidParams;
 
+    private array $additionalParams;
+
     public function __construct(
         string $type,
         ?string $title = 'Error',
         ?int $status = 500,
         ?string $detail = null,
         ?string $instance = null,
-        array $invalidParams = []
+        array $invalidParams = [],
+        array $additionalParams = []
     ) {
         $this->type = $type;
         $this->title = $title;
@@ -40,6 +43,15 @@ class HttpError
         $this->detail = $detail;
         $this->instance = $instance;
         $this->invalidParams = $invalidParams;
+        $this->additionalParams = $additionalParams;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAdditionalParams(): array
+    {
+        return $this->additionalParams;
     }
 
     public function getType(): string
